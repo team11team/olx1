@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
@@ -6,7 +6,17 @@ import Search from '../../assets/Search';
 import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
+import { getAuth, signOut } from "firebase/auth";
+
+import { AuthContex,firebaseContex } from '../../store/firebaseContext';
+import { useNavigate } from 'react-router-dom';
 function Header() {
+  const navegate=useNavigate()
+  const auth = getAuth();
+const {firebase}=useContext(firebaseContex)
+  const {user}=useContext(AuthContex)
+
+  console.log(user);
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -34,8 +44,17 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <span>Login</span>
+          <span>{user? user.displayName :'login'}</span>
           <hr />
+          { user&&<span onClick={()=>{
+            signOut(auth).then(()=>{
+              navegate('login')
+            })
+
+          }}>Logout</span>}
+
+        
+        
         </div>
 
         <div className="sellMenu">
