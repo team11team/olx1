@@ -9,7 +9,7 @@ import SellButtonPlus from '../../assets/SellButtonPlus';
 import { getAuth, signOut } from "firebase/auth";
 
 import { AuthContex,firebaseContex } from '../../store/firebaseContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function Header() {
   const navegate=useNavigate()
   const auth = getAuth();
@@ -41,16 +41,18 @@ const {firebase}=useContext(firebaseContex)
         </div>
         <div className="language">
           <span> ENGLISH </span>
-          <Arrow></Arrow>
+          <Arrow >
+          </Arrow>
+
         </div>
         <div className="loginPage">
-          <span>{user? user.displayName :'login'}</span>
+          <span>{user? user. displayName :<Link style={{color:'black'}} to={'/login'}>Login  </Link>}</span>
           <hr />
           { user&&<span onClick={()=>{
             signOut(auth).then(()=>{
               navegate('login')
             })
-
+            
           }}>Logout</span>}
 
         

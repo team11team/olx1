@@ -30,6 +30,8 @@ export default function Signup() {
       
       updateProfile(auth.currentUser,{
         displayName:userName
+   
+        
       })
 
       .then(() => {

@@ -1,5 +1,6 @@
 import { getFirestore } from "firebase/firestore";
 import { initializeApp} from "firebase/app"; 
+import 'firebase/storage'
 
 //this for firebase setup to get firbase backend storage
 const firebaseConfig = {

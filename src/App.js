@@ -10,6 +10,7 @@ import {AuthContex, firebaseContex,} from './store/firebaseContext'
 import Home from './Pages/Home';
 import Login from './Components/Login/Login';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
+import Create from './Components/Create/Create';
 
 function App() {
   const {user,setUser}=useContext(AuthContex)
@@ -50,6 +51,12 @@ function App() {
 
     <Routes>
     <Route element={ <Login />} path={'/login'}>
+    </Route>
+    </Routes>
+
+    
+    <Routes>
+    <Route element={ <Create />} path={'/create'}>
     </Route>
     </Routes>
 
