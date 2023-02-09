@@ -2,15 +2,18 @@ import React,{useEffect,useContext  } from 'react';
 import './App.css';
 import Signup from './Pages/Signup'
 
-import {BrowserRouter as Router,Link,Route,Routes,} from 'react-router-dom'
+import {Link,Route,Routes,} from 'react-router-dom'
 import {AuthContex, firebaseContex,} from './store/firebaseContext'
 /**
  * ?  =====Import Components=====
- */
+*/
 import Home from './Pages/Home';
 import Login from './Components/Login/Login';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import Create from './Components/Create/Create';
+import View from './Pages/ViewPost' 
+import Post from './store/ViewContext';
+
 
 function App() {
   const {user,setUser}=useContext(AuthContex)
@@ -35,6 +38,9 @@ function App() {
   return (
     <div>
 
+     
+
+<Post>
 
      
         
@@ -60,7 +66,15 @@ function App() {
     </Route>
     </Routes>
 
+    
+    <Routes>
+    <Route element={ <View/>} path={'/view'}>
+    </Route>
+    </Routes>
 
+
+
+</Post>
     
     
 

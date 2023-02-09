@@ -7,10 +7,17 @@ import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { getAuth, signOut } from "firebase/auth";
+import {Postcontext}from '../../store/ViewContext'
+
+
 
 import { AuthContex,firebaseContex } from '../../store/firebaseContext';
 import { Link, useNavigate } from 'react-router-dom';
 function Header() {
+  const {PostDetails}=useContext(Postcontext)
+
+  console.log(PostDetails);
+  
   const navegate=useNavigate()
   const auth = getAuth();
 const {firebase}=useContext(firebaseContex)
@@ -60,10 +67,12 @@ const {firebase}=useContext(firebaseContex)
         </div>
 
         <div className="sellMenu">
-          <SellButton></SellButton>
+          <SellButton ></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
-            <span>SELL</span>
+            <span onClick={()=>{
+              navegate('create')
+            }}>SELL</span>
           </div>
         </div>
       </div>

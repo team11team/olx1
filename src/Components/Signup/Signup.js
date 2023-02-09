@@ -38,7 +38,7 @@ export default function Signup() {
       
         console.log("got it");
         const db=getFirestore(firebase)
-        const products=addDoc(collection(db, 'hey'),{
+        const products=addDoc(collection(db, 'user'),{
           id:result.user.uid,
           user:userName,
           phone:phonenumber
